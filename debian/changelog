@@ -1,3 +1,12 @@
+dpkg (1.21.1ubuntu2.2) jammy; urgency=medium
+
+  * Cherry-pick 940f86c37f9f from dpkg.git (LP: #1960582)
+    [ Guillem Jover ]
+    - debian: Ignore directories for the alternatives state fixup
+      (Closes: #1001695)
+
+ -- Chengen Du <chengen.du@canonical.com>  Sat, 01 Apr 2023 21:43:42 +0800
+
 dpkg (1.21.1ubuntu2.1) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Directory traversal issue in dpkg-source
