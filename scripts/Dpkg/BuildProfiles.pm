@@ -80,6 +80,11 @@ sub set_build_profiles {
     my (@profiles) = @_;
 
     $cache_profiles = 1;
+    # This is called from dpkg-buildpackage.pl unconditionally. If no profile
+    # was passed from the command line, check the environment variable.
+    if (!@profiles && Dpkg::Build::Env::has('DEB_BUILD_PROFILES')) {
+        @profiles = split ' ', Dpkg::Build::Env::get('DEB_BUILD_PROFILES');
+    }
     @build_profiles = @profiles;
     run_vendor_hook('update-buildprofiles', \@build_profiles);
     Dpkg::Build::Env::set('DEB_BUILD_PROFILES', join ' ', @build_profiles);

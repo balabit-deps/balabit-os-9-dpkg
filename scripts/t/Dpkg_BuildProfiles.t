@@ -16,7 +16,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 10;
+use Test::More tests => 11;
 
 BEGIN {
     use_ok('Dpkg::BuildProfiles', qw(parse_build_profiles
@@ -71,6 +71,17 @@ is_deeply([ get_build_profiles() ], [ qw(noudeb nocheck stage1) ],
 set_build_profiles(qw(!noudeb nocheck stage1));
 is_deeply([ get_build_profiles() ], [ qw(nocheck stage1) ],
     'get active build profiles explicitly set');
+
+{
+    local $ENV{DEB_BUILD_PROFILES} = 'cross nodoc profile.name';
+
+    # dpkg-buildpackage.pl calls set_build_profiles with an empty array by
+    # default (unless --build-profiles is used), ensure the env var is still
+    # parsed
+    set_build_profiles(qw());
+    is_deeply([ get_build_profiles() ], [ qw(noudeb cross nodoc profile.name) ],
+        'get active build profiles from environment');
+}
 
 
 1;

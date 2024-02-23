@@ -1,3 +1,10 @@
+dpkg (1.21.1ubuntu2.3) jammy; urgency=medium
+
+  [ Luca Boccassi ]
+  * Fix dpkg-buildpackage ignoring DEB_BUILD_PROFILES (LP: #2054741)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 23 Feb 2024 15:53:39 +0100
+
 dpkg (1.21.1ubuntu2.2) jammy; urgency=medium
 
   * Cherry-pick 940f86c37f9f from dpkg.git (LP: #1960582)
