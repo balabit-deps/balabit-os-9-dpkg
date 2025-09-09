@@ -1,3 +1,12 @@
+dpkg (1.21.1ubuntu2.6) jammy-security; urgency=medium
+
+  [ Joy Latten ]
+  * SECURITY UPDATE:
+  - Fix cleanup for control member with restricted directories. LP: #2122053
+  - Fixes CVE-2025-6297
+
+ -- Serge Hallyn <serge.hallyn@ubuntu.com>  Tue, 09 Sep 2025 15:09:16 -0500
+
 dpkg (1.21.1ubuntu2.3) jammy; urgency=medium
 
   [ Luca Boccassi ]
